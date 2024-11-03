@@ -1,6 +1,7 @@
 import tkinter as tk
 from tkinter import Label
 from PIL import Image, ImageTk
+import customtkinter
 
 # Resize splash logo image
 image_path = 'D:/logo/motologo5.png'
@@ -20,6 +21,7 @@ splash_label.place(x=130, y=50)
 # Splash logo
 logo_image = ImageTk.PhotoImage(resized_img)
 lbl = Label(splash_root, image=logo_image)
+lbl.image = logo_image  # keep a reference to avoid garbage collection
 lbl.pack()
 
 # Main window
@@ -34,12 +36,17 @@ def main_window():
     # Load and display main window logo
     main_image_path = 'khakilogo.png'
     main_img = Image.open(main_image_path)
-
     resized_main_img = main_img.resize((44, 44), Image.LANCZOS)
     main_logo_image = ImageTk.PhotoImage(resized_main_img)
     main_label = Label(root, image=main_logo_image, bg='#001F3F')
     main_label.image = main_logo_image
     main_label.place(rely=0.02, relx=0.02)
+
+    line_img = ImageTk.PhotoImage(Image.open('line.png'))
+    bgline = Label(root, image=line_img, bg='#001f3f', width= 440)
+    bgline.image = line_img
+    bgline.place(x=0, y=590)
+
 
     # Logo title
     title_label = Label(root, text="MOTIVATION QUOTES", font=("Raleway", 12, 'bold'), bg="#001F3F", fg="white")
@@ -55,45 +62,54 @@ def main_window():
     # Image Slider
     images = ['m1.jpg', 'm2.png', 'm3.jpg', 'm4.png', 'm5.png', 'm6.jpg', 'm7.png', 'm8.jpg', 'm9.png', 'm10.png']
     current_image = 0
-    slider_width = 430  # customize width 
-    slider_height = 220  # customize height
+    slider_width = 430
+    slider_height = 220
     
     slider_label = Label(root, bg='#001F3F')
-    slider_label.place(x=-2, y=75)  # position
+    slider_label.place(x=-2, y=75)
     
     def update_image():
         nonlocal current_image
-
         image = Image.open(images[current_image]).resize((slider_width, slider_height))
         photo = ImageTk.PhotoImage(image)
         slider_label.config(image=photo)
         slider_label.image = photo
-        
         current_image = (current_image + 1) % len(images)
-        root.after(8000, update_image)  # speed
+        root.after(8000, update_image)
 
-    # Start the slideshow
+    # Start slideshow
     update_image()
     
-    # Button for category
-    category_button = Image.open('rounded.png').resize((140, 38))
-    button_img = ImageTk.PhotoImage(category_button)
-    category_button = tk.Button(root, image=button_img, text='Life', font=('Raleway', 14, 'bold'),
-    compound="center", fg="#001F3F", bg='#001F3F', borderwidth=0,activebackground='#001F3F')
+    # Buttons
+    life_button_img = ImageTk.PhotoImage(Image.open('rounded.png').resize((140, 38)))
+    life_button = tk.Button(root, image=life_button_img, text='Life', font=('Raleway', 14, 'bold'),
+    compound="center", fg="#001F3F", bg='#001F3F', borderwidth=0,
+    activebackground='#001F3F', cursor='hand2')
+    life_button.image = life_button_img
+    life_button.place(x=15, y=320)
 
-    category_button.image = button_img
-    category_button.place(x=15, y=320)
+    edu_button_img = ImageTk.PhotoImage(Image.open('rounded2.png').resize((140, 38)))
+    edu_button = tk.Button(root, image=edu_button_img, text='Education', font=('Raleway', 14, 'bold'),
+    compound="center", fg="#201E43", bg='#001F3F', borderwidth=0,
+    activebackground='#001F3F', activeforeground='#EAD8B1', cursor='hand2')
+    edu_button.image = edu_button_img
+    edu_button.place(x=162, y=320)
 
-    category_button = Image.open('rounded.png').resize((140, 38))
-    button_img = ImageTk.PhotoImage(category_button)
-    category_button = tk.Button(root, image=button_img, text='Education', font=('Raleway', 14, 'bold'),
-    compound="center", fg="#001F3F", bg='#001F3F', borderwidth=0,activebackground='#001F3F')
+    success_button_img = ImageTk.PhotoImage(Image.open('rounded2.png').resize((140, 38)))
+    success_button = tk.Button(root, image=success_button_img, text='Success', font=('Raleway', 14, 'bold'),
+    compound="center", fg="#201E43", bg='#001F3F', borderwidth=0,
+    activebackground='#001F3F', activeforeground='#EAD8B1', cursor='hand2')
+    success_button.image = success_button_img
+    success_button.place(x=309, y=320)
 
-    category_button.image = button_img
-    category_button.place(x=162, y=320)
+    # Content
+    custom_frame = customtkinter.CTkFrame(root, width=400, height=310, corner_radius=20, fg_color='#EAD8B1')
+    custom_frame.place(x=15, y=375)
+    custom_frame2 = customtkinter.CTkFrame(root, width=230, height=50, corner_radius=50, fg_color='#EAD8B1')
+    custom_frame2.place(x=100, y=690)
 
 # Screen delay
 splash_root.after(3000, lambda: [splash_root.destroy(), main_window()])
 
-# Splash screen
+# Splash screen mainloop
 splash_root.mainloop()
