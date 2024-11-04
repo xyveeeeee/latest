@@ -1,7 +1,7 @@
 import tkinter as tk
 from tkinter import Label
 from PIL import Image, ImageTk
-import customtkinter
+import customtkinter as ctk
 
 # Resize splash logo image
 image_path = 'D:/logo/motologo5.png'
@@ -93,7 +93,7 @@ def main_window():
     compound="center", fg="#201E43", bg='#001F3F', borderwidth=0,
     activebackground='#001F3F', activeforeground='#EAD8B1', cursor='hand2')
     edu_button.image = edu_button_img
-    edu_button.place(x=162, y=320)
+    edu_button.place(x=162, y=320) 
 
     success_button_img = ImageTk.PhotoImage(Image.open('rounded2.png').resize((140, 38)))
     success_button = tk.Button(root, image=success_button_img, text='Success', font=('Raleway', 14, 'bold'),
@@ -103,11 +103,157 @@ def main_window():
     success_button.place(x=309, y=320)
 
     # Content
-    custom_frame = customtkinter.CTkFrame(root, width=400, height=310, corner_radius=20, fg_color='#EAD8B1')
-    custom_frame.place(x=15, y=375)
-    custom_frame2 = customtkinter.CTkFrame(root, width=230, height=50, corner_radius=50, fg_color='#EAD8B1')
-    custom_frame2.place(x=100, y=690)
+    scrollable_frame = ctk.CTkScrollableFrame(root, width=365, height=250, corner_radius=25, fg_color='#EAD8B1')
+    scrollable_frame.place(x=15, y=375) 
 
+    home_label1 = ctk.CTkLabel(
+    scrollable_frame, 
+    text="Each day you must choose the pain of discipline, or the pain of regret.",
+    font=('Raleway', 16, 'bold'),
+    text_color='#EAD8B1',
+    fg_color='#634345', 
+    width=360,
+    height=160,
+    corner_radius=20,
+    wraplength=280
+    )
+    home_label1.pack(pady=(0, 0)) 
+    home_label2 = ctk.CTkLabel(
+    scrollable_frame, 
+    text="Be the reason someone feels welcomed, seen, heard, valued, loved and supported.",
+    font=('Raleway', 16, 'bold'),
+    text_color='#EAD8B1',
+    fg_color='#634345', 
+    width=360,
+    height=160,
+    corner_radius=20,
+    wraplength=280
+    )
+    home_label2.pack(pady=(20, 0))
+
+    home_label3 = ctk.CTkLabel(
+    scrollable_frame, 
+    text="One day, you'll beliving the life you once prayed for.",
+    font=('Raleway', 16, 'bold'),
+    text_color='#EAD8B1',
+    fg_color='#634345', 
+    width=360,
+    height=160,
+    corner_radius=20,
+    wraplength=280
+    )
+    home_label3.pack(pady=(20, 0))
+    home_label4 = ctk.CTkLabel(
+    scrollable_frame, 
+    text="Accept both compliments and criticism. It takes both sun and rain for a flower to grow.",
+    font=('Raleway', 16, 'bold'),
+    text_color='#EAD8B1',
+    fg_color='#634345', 
+    width=360,
+    height=160,
+    corner_radius=20,
+    wraplength=280
+    )
+    home_label4.pack(pady=(20, 0))
+
+    home_label5 = ctk.CTkLabel(
+    scrollable_frame, 
+    text="Psychology says 'You ll never live a happy life if you always care about what others think about you.'",
+    font=('Raleway', 16, 'bold'),
+    text_color='#EAD8B1',
+    fg_color='#634345', 
+    width=360,
+    height=160,
+    corner_radius=20,
+    wraplength=280
+    )
+    home_label5.pack(pady=(20, 0))
+
+    home_label6 = ctk.CTkLabel(
+    scrollable_frame, 
+    text="Psychology says 'Ships don't sink because of the water around them. Ships sink because of the water that gets in them.' Don't let what's happening around you get inside you and weigh you down.",
+    font=('Raleway', 16, 'bold'),
+    text_color='#EAD8B1',
+    fg_color='#634345', 
+    width=360,
+    height=160,
+    corner_radius=20,
+    wraplength=280
+    )
+    home_label6.pack(pady=(20, 0))
+
+    home_label7 = ctk.CTkLabel(
+    scrollable_frame, 
+    text="Life isn't about finding yourself. It's about creating yourself.",
+    font=('Raleway', 16, 'bold'),
+    text_color='#EAD8B1',
+    fg_color='#634345', 
+    width=360,
+    height=160,
+    corner_radius=20,
+    wraplength=280
+    )
+    home_label7.pack(pady=(20, 0))
+
+    home_label8 = ctk.CTkLabel(
+    scrollable_frame, 
+    text="You cannot live when are you untouchable. Life vulnerability.",
+    font=('Raleway', 16, 'bold'),
+    text_color='#EAD8B1',
+    fg_color='#634345', 
+    width=360,
+    height=160,
+    corner_radius=20,
+    wraplength=280
+    )
+    home_label8.pack(pady=(20, 0))
+
+    home_label9 = ctk.CTkLabel(
+    scrollable_frame, 
+    text="Use the weekend to build the life you want instead of trying to escape the life you have.",
+    font=('Raleway', 16, 'bold'),
+    text_color='#EAD8B1',
+    fg_color='#634345', 
+    width=360,
+    height=160,
+    corner_radius=20,
+    wraplength=280
+    )
+    home_label9.pack(pady=(20, 0))
+
+    home_label10 = ctk.CTkLabel(
+    scrollable_frame, 
+    text="an inch of MOVEMENT will bring you closer to your goals than a mile of INTENTION.",
+    font=('Raleway', 16, 'bold'),
+    text_color='#EAD8B1',
+    fg_color='#634345', 
+    width=360,
+    height=160,
+    corner_radius=20,
+    wraplength=280
+    )
+    home_label10.pack(pady=(20, 0))
+
+    # navigation content
+    custom_frame2 = ctk.CTkFrame(root, width=200, height=55, corner_radius=50, fg_color='#EAD8B1')
+    custom_frame2.place(x=110, y=686)
+    
+    home_frame2 = ImageTk.PhotoImage(Image.open('home.png').resize((40,34)))
+    home_frame = tk.Button( root,image=home_frame2,bg='#ead8b1',cursor='hand2', borderwidth=0,activebackground='#ead8b1')
+    home_frame.image = home_frame2
+    home_frame.place(x=118, y=696)
+
+    favorite_frame2 = ImageTk.PhotoImage(Image.open('favorite.png').resize((40,34)))
+    favorite_frame = tk.Button( root,image=favorite_frame2,bg='#ead8b1',cursor='hand2', borderwidth=0,activebackground='#ead8b1')
+    favorite_frame.image = favorite_frame2
+    favorite_frame.place(x=185, y=696)
+
+    bookmark_frame2 = ImageTk.PhotoImage(Image.open('bookmark.png').resize((40,34)))
+    bookmark_frame = tk.Button( root,image=bookmark_frame2,bg='#ead8b1',cursor='hand2', borderwidth=0,activebackground='#ead8b1')
+    bookmark_frame.image = bookmark_frame2
+    bookmark_frame.place(x=255, y=696)
+
+    
 # Screen delay
 splash_root.after(3000, lambda: [splash_root.destroy(), main_window()])
 
